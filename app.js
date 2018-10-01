@@ -25,7 +25,8 @@ ctx.strokestyle = CANVAS_BORDER_COLOR;
 ctx.fillRect(0, 0, game.width, game.height);
 ctx.strokeRect(0, 0, game.width, game.height);
 
-moveSnake();
+dx = 0;
+dy = -10;
 
 drawSnake();
 
@@ -42,10 +43,63 @@ function drawSnake() {
 }
 
 function moveSnake() {
-  const head = {x: snake[0].x + dx, y: snake[0].y};
+  const head = {x: snake[0].x + dx, y: snake[0].y + dy};
 
   snake.unshift(head);
   snake.pop();
 }
 
+function clearCanvas() {
+  ctx.fillStyle = CANVAS_BACKGROUND_COLOR;
+  ctx.strokeStyle = CANVAS_BORDER_COLOR;
+
+  ctx.fillRect(0, 0, game.width, game.height);
+  ctx.strokeRect(0, 0, game.width, game.height);
+}
+
+function main() {
+  setTimeout(function onTick() {
+    clearCanvas();
+    moveSnake();
+    drawSnake();
+    main();
+  }, 100);
+}
+
+// main();
+
+function changeDirection(event) {
+  const LEFT_KEY = 37;
+  const RIGHT_KEY = 39;
+  const UP_KEY = 38;
+  const DOWN_KEY = 40;
+
+  const keyPressed = event.keyCode;
+  const goingUp = dy === -10;
+  const goingDown = dy === 10;
+  const goingRight = dx === 10;
+  const goingLeft = dx === -10;
+
+  if(keyPressed === LEFT_KEY && !goingRight) {
+    dx = -10;
+    dy = 0;
+  }  
+
+  if(keyPressed === UP_KEY && !goingDown) {
+    dx = 0;
+    dy = -10;
+  }
+
+  if(keyPressed === RIGHT_KEY && !goingLeft) {
+    dx = 10;
+    dy = 0;
+  }
+
+  if(keyPressed === DOWN_KEY && !goingDown) {
+    dx = 0;
+    dy = 10;
+  }
+}
+
+document.addEventListener('keydown', changeDirection);
 
