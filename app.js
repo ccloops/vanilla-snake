@@ -112,8 +112,8 @@ function randomTen(min, max) {
 }
 
 function createFood() {
-  foodX = randomTen(0, game.width - 10);
-  foodY = randomTen(0, game.height - 10);
+  let foodX = randomTen(0, game.width - 10);
+  let foodY = randomTen(0, game.height - 10);
 
   snake.forEach(function isFoodOnSnake(piece) {
     const foodIsOnSnake = part.x === foodX && part.y === foodY;

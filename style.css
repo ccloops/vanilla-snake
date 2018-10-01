@@ -7,24 +7,28 @@ canvas {
   margin: 0 auto;
 }
 
-h1, h2, h3, h4 {
-  text-align: center;
+header ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
 }
 
-h1 {
+li {
+  padding: 0 3em;
+}
+
+li:first-child {
   font-family: 'Audiowide', cursive;
 }
 
-h2 {
-  font-family: 'Jura',
-  sans-serif;
+li:nth-child(2) {
+   font-family: 'Jura', sans-serif;
 }
 
-h3 {
-   font-family: 'Racing Sans One',
-    cursive;
+li:nth-child(3) {
+   font-family: 'Racing Sans One', cursive;
 }
 
-h4 {
+li:nth-child(4) {
   font-family: 'Press Start 2P', cursive;
 }
