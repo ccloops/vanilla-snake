@@ -95,9 +95,18 @@ p:hover {
   }
 }
 
-footer {
-  font-size: 2em;
-  text-align: center;
+button {
+  margin: 1em;
+  padding: 1em;
+  border-radius: 10%;
+  background-color: darkSlateGray;
+  color: cornSilk;
+  font-family: 'Audiowide', cursive;
+}
+
+button:hover {
+  background-color: darkgreen;
+  cursor: pointer;
 }
 
 .tropical {
@@ -106,4 +115,9 @@ footer {
 
 .underwater {
   background-color: turquoise;
+}
+
+footer {
+  font-size: 2em;
+  text-align: center;
 }
