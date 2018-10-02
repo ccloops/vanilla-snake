@@ -1,0 +1,128 @@
+body {
+  background-color: salmon;
+}
+
+header ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a {
+  padding: 0 3em;
+}
+
+a:first-child {
+  font-family: 'Audiowide', cursive;
+}
+
+a:nth-child(2) {
+   font-family: 'Jura', sans-serif;
+}
+
+a:nth-child(3) {
+   font-family: 'Racing Sans One', cursive;
+}
+
+a:nth-child(4) {
+  font-family: 'Press Start 2P', cursive;
+}
+
+div, section {
+  background-color: goldenrod;  
+}
+
+section {
+  width: 80%;
+  height: 300px;
+  border: 2px solid black;
+  margin: 3em auto;
+}
+
+p {
+  background-color: gold;
+  border: 2px dashed black;
+  padding: 1em;
+  margin: 1em;
+  width: 5px;
+  display: inline-block;
+}
+
+p:hover {
+  background-color: cornsilk;
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+button {
+  margin: 1em;
+  padding: 1em;
+  border-radius: 10%;
+  background-color: darkSlateGray;
+  color: cornSilk;
+  font-family: 'Audiowide', cursive;
+}
+
+button:hover {
+  background-color: darkgreen;
+  cursor: pointer;
+}
+
+.tropical {
+  background-color: goldenRod;
+}
+
+.underwater {
+  background-color: turquoise;
+}
+
+footer {
+  font-size: 2em;
+  text-align: center;
+}
+
+#reset {
+  margin: 0 auto;
+  display: block;
+}

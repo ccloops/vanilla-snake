@@ -13,34 +13,32 @@ header ul {
   list-style-type: none;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 li {
   padding: 0 3em;
 }
 
-li:first-child {
+a:first-child {
   font-family: 'Audiowide', cursive;
 }
 
-li:nth-child(2) {
-   font-family: 'Jura', sans-serif;
+a:nth-child(2) {
+  font-family: 'Jura', sans-serif;
 }
 
-li:nth-child(3) {
-   font-family: 'Racing Sans One', cursive;
+a:nth-child(3) {
+  font-family: 'Racing Sans One', cursive;
 }
 
-li:nth-child(4) {
+a:nth-child(4) {
   font-family: 'Press Start 2P', cursive;
 }
 
-div {
-  width: 300px;
-  height: 300px;
-  border: 2px solid black;
-}
-
-section {
- width: 300px;
- height: 300px;
- border: 2px solid black;
+footer {
+  font-size: 2em;
+  text-align: center;
 }
