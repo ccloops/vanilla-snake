@@ -37,10 +37,12 @@ div {
   width: 300px;
   height: 300px;
   border: 2px solid black;
+  margin: 3em auto;
 }
 
 section {
  width: 300px;
  height: 300px;
  border: 2px solid black;
+ margin: 0 auto;
 }
