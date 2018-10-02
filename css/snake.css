@@ -1,0 +1,44 @@
+body {
+  background-color: goldenrod;
+}
+
+canvas {
+  display: block;
+  margin: 0 auto;
+}
+
+header ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+li {
+  padding: 0 3em;
+}
+
+a:first-child {
+  font-family: 'Audiowide', cursive;
+}
+
+a:nth-child(2) {
+  font-family: 'Jura', sans-serif;
+}
+
+a:nth-child(3) {
+  font-family: 'Racing Sans One', cursive;
+}
+
+a:nth-child(4) {
+  font-family: 'Press Start 2P', cursive;
+}
+
+footer {
+  font-size: 2em;
+  text-align: center;
+}

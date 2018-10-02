@@ -1,10 +1,5 @@
 body {
-  background-color: goldenrod;
-}
-
-canvas {
-  display: block;
-  margin: 0 auto;
+  background-color: salmon;
 }
 
 header ul {
@@ -13,24 +8,33 @@ header ul {
   list-style-type: none;
 }
 
-li {
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a {
   padding: 0 3em;
 }
 
-li:first-child {
+a:first-child {
   font-family: 'Audiowide', cursive;
 }
 
-li:nth-child(2) {
+a:nth-child(2) {
    font-family: 'Jura', sans-serif;
 }
 
-li:nth-child(3) {
+a:nth-child(3) {
    font-family: 'Racing Sans One', cursive;
 }
 
-li:nth-child(4) {
+a:nth-child(4) {
   font-family: 'Press Start 2P', cursive;
+}
+
+div, section {
+  background-color: goldenrod;  
 }
 
 div {
@@ -45,4 +49,14 @@ section {
  height: 300px;
  border: 2px solid black;
  margin: 0 auto;
+}
+
+p {
+  box-shadow: 3px 3px darkGray,
+  -1em 0 .4em lightslategray;
+}
+
+footer {
+  font-size: 2em;
+  text-align: center;
 }
