@@ -108,7 +108,24 @@ function dropHandler(event) {
 
 }
 
+function renderLetterPosition() {
+  for(let i in Alphabet.all) {
+    if(Alphabet.all[i].left !== 0) {
+      console.log(Alphabet.all[i]);
+      let elementSelected = document.getElementById(Alphabet.all[i].letter);
+      console.log(elementSelected);
+      elementSelected.style.position = 'absolute';
+      elementSelected.style.zIndex = 1000;
+      elementSelected.style.left = Alphabet.all[i].left;
+      elementSelected.style.top = Alphabet.all[i].top;
+    }
+  }
+}
+
+
 createLetters();
+renderLetterPosition();
+
 
 myDiv.addEventListener('dragover', dragOverHandler);
 myDiv.addEventListener('drop', dropHandler);
