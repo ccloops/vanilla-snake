@@ -21,7 +21,7 @@ const myFreezer = document.getElementById('freezer');
 const myDiv = document.getElementById('target');
 const tropical = document.getElementById('tropical');
 const underWater = document.getElementById('underwater');
-const refresh = document.getElementById('refresh');
+const reset = document.getElementById('reset');
 
 function changeTheme(event) {
   event.preventDefault();
@@ -123,7 +123,7 @@ function renderLetterPosition() {
   }
 }
 
-function refreshFridge(event) {
+function resetLetters(event) {
   Alphabet.all = [];
   localStorage.clear();
   instantiateAlphabet();
@@ -144,4 +144,4 @@ myFreezer.addEventListener('drop', dropHandler);
 tropical.addEventListener('click', changeTheme);
 underWater.addEventListener('click', changeTheme);
 
-refresh.addEventListener('click', refreshFridge);
+reset.addEventListener('click', resetLetters);
