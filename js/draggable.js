@@ -1,35 +1,46 @@
 'use strict';
 
-const myParagraph = document.getElementById('p1');
-const myDiv = document.getElementById('target');
+const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
 const myFreezer = document.getElementById('freezer');
+const myDiv = document.getElementById('target');
+let magnet;
 
-function dragstart_handler(ev) {
-  ev.dataTransfer.setData("text/plain", ev.target.id);
-  ev.dropEffect = "move";
+for(let letter of alphabet) {
+  magnet = document.createElement('p');
+  magnet.textContent = letter;
+  magnet.setAttribute('draggable', 'true');
+  magnet.setAttribute('id', letter);
+  magnet.addEventListener('dragstart', dragStartHandler);
+  myFreezer.appendChild(magnet);
 }
 
-function dragover_handler(ev) {
-  ev.preventDefault();
-  ev.dataTransfer.dropEffect = "move"
+function dragStartHandler(event) {
+  event.dataTransfer.setData("text/plain", event.target.id);
+  event.dropEffect = "move";
 }
 
-function drop_handler(ev) {
-  ev.preventDefault();
-  var data = ev.dataTransfer.getData("text/plain");
-  ev.target.appendChild(document.getElementById(data));
-  console.log('event', event.x, event.y);
-  console.log(event);
-  myParagraph.style.position = 'absolute';
-  myParagraph.style.zIndex = 1000;
-  myParagraph.style.left = event.pageX - myParagraph.offsetWidth / 2 + 'px';
-  myParagraph.style.top = event.pageY - myParagraph.offsetHeight / 2 + 'px';
+function dragOverHandler(event) {
+  event.preventDefault();
+  event.dataTransfer.dropEffect = "move"
 }
 
-myParagraph.addEventListener('dragstart', dragstart_handler);
+function dropHandler(event) {
+  event.preventDefault();
+  var data = event.dataTransfer.getData("text/plain");
+  event.target.appendChild(document.getElementById(data));
 
-myDiv.addEventListener('dragover', dragover_handler);
-myDiv.addEventListener('drop', drop_handler);
+  let elementSelected = document.getElementById(data);
 
-myFreezer.addEventListener('dragover', dragover_handler);
-myFreezer.addEventListener('drop', drop_handler);
+  elementSelected.style.position = 'absolute';
+  elementSelected.style.zIndex = 1000;
+  elementSelected.style.left = event.pageX - elementSelected.offsetWidth / 2 + 'px';
+  elementSelected.style.top = event.pageY - elementSelected.offsetHeight / 2 + 'px';
+}
+
+
+myDiv.addEventListener('dragover', dragOverHandler);
+myDiv.addEventListener('drop', dropHandler);
+
+myFreezer.addEventListener('dragover', dragOverHandler);
+myFreezer.addEventListener('drop', dropHandler);

@@ -39,6 +39,7 @@ document.addEventListener('keydown', changeDirection);
 function main() {
 
   if(didGameEnd()) return;
+  // if (pauseGame()) return;
 
   setTimeout(function onTick() {
     clearCanvas();
@@ -155,6 +156,13 @@ function changeDirection(event) {
   }
 }
 
+function pauseGame(event) {
+  if (event.keyCode === 80) {
+    console.log('pause');
+    return true;
+  }
+}
 
+document.addEventListener('keydown', pauseGame);
 
 
