@@ -4,10 +4,25 @@ const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm
 
 const myFreezer = document.getElementById('freezer');
 const myDiv = document.getElementById('target');
-let magnet;
+const tropical = document.getElementById('tropical');
+const underWater = document.getElementById('underwater');
+
+function changeTheme(event) {
+  event.preventDefault();
+  console.log(event.target.id);
+  if(event.target.id === 'tropical') {
+    myFreezer.setAttribute('class', 'tropical');
+    myDiv.setAttribute('class', 'tropical');
+  }
+
+  if (event.target.id === 'underwater') {
+    myFreezer.setAttribute('class', 'underwater');
+    myDiv.setAttribute('class', 'underwater');
+  }
+}
 
 for(let letter of alphabet) {
-  magnet = document.createElement('p');
+  let magnet = document.createElement('p');
   magnet.textContent = letter;
   magnet.setAttribute('draggable', 'true');
   magnet.setAttribute('id', letter);
@@ -44,3 +59,6 @@ myDiv.addEventListener('drop', dropHandler);
 
 myFreezer.addEventListener('dragover', dragOverHandler);
 myFreezer.addEventListener('drop', dropHandler);
+
+tropical.addEventListener('click', changeTheme);
+underWater.addEventListener('click', changeTheme);
