@@ -121,3 +121,8 @@ footer {
   font-size: 2em;
   text-align: center;
 }
+
+#refresh {
+  margin: 0 auto;
+  display: block;
+}

@@ -158,7 +158,6 @@ function changeDirection(event) {
 
 function pauseGame(event) {
   if (event.keyCode === 80) {
-    console.log('pause');
     return true;
   }
 }

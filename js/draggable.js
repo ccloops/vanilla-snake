@@ -12,7 +12,31 @@ function Alphabet(letter) {
 let storedAlphabet = localStorage.getItem('alphabet');
 
 if(!storedAlphabet) {
+  instantiateAlphabet();
+} else {
+  Alphabet.all = JSON.parse(storedAlphabet);
+}
 
+const myFreezer = document.getElementById('freezer');
+const myDiv = document.getElementById('target');
+const tropical = document.getElementById('tropical');
+const underWater = document.getElementById('underwater');
+const refresh = document.getElementById('refresh');
+
+function changeTheme(event) {
+  event.preventDefault();
+  if(event.target.id === 'tropical') {
+    myFreezer.setAttribute('class', 'tropical');
+    myDiv.setAttribute('class', 'tropical');
+  }
+
+  if (event.target.id === 'underwater') {
+    myFreezer.setAttribute('class', 'underwater');
+    myDiv.setAttribute('class', 'underwater');
+  }
+}
+
+function instantiateAlphabet() {
   new Alphabet('a');
   new Alphabet('b');
   new Alphabet('c');
@@ -41,27 +65,6 @@ if(!storedAlphabet) {
   new Alphabet('z');
 
   localStorage.setItem('alphabet', JSON.stringify(Alphabet.all));
-} else {
-  Alphabet.all = JSON.parse(storedAlphabet);
-}
-
-const myFreezer = document.getElementById('freezer');
-const myDiv = document.getElementById('target');
-const tropical = document.getElementById('tropical');
-const underWater = document.getElementById('underwater');
-
-function changeTheme(event) {
-  event.preventDefault();
-  console.log(event.target.id);
-  if(event.target.id === 'tropical') {
-    myFreezer.setAttribute('class', 'tropical');
-    myDiv.setAttribute('class', 'tropical');
-  }
-
-  if (event.target.id === 'underwater') {
-    myFreezer.setAttribute('class', 'underwater');
-    myDiv.setAttribute('class', 'underwater');
-  }
 }
 
 function createLetters() {
@@ -111,15 +114,20 @@ function dropHandler(event) {
 function renderLetterPosition() {
   for(let i in Alphabet.all) {
     if(Alphabet.all[i].left !== 0) {
-      console.log(Alphabet.all[i]);
       let elementSelected = document.getElementById(Alphabet.all[i].letter);
-      console.log(elementSelected);
       elementSelected.style.position = 'absolute';
       elementSelected.style.zIndex = 1000;
       elementSelected.style.left = Alphabet.all[i].left;
       elementSelected.style.top = Alphabet.all[i].top;
     }
   }
+}
+
+function refreshFridge(event) {
+  Alphabet.all = [];
+  localStorage.clear();
+  instantiateAlphabet();
+  location.reload();
 }
 
 
@@ -135,3 +143,5 @@ myFreezer.addEventListener('drop', dropHandler);
 
 tropical.addEventListener('click', changeTheme);
 underWater.addEventListener('click', changeTheme);
+
+refresh.addEventListener('click', refreshFridge);
