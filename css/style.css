@@ -144,3 +144,9 @@ h3 {
   color: black;
   position: absolute;
 }
+
+div {
+  width: 300px;
+  height: 300px;
+  border: 2px solid black;
+}

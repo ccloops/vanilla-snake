@@ -1,6 +1,7 @@
 'use strict';
 
 Alphabet.all = [];
+Word.all = [];
 let wordStaging = [];
 let wordBank;
 
@@ -10,6 +11,14 @@ function Alphabet(letter) {
   this.top = 0;
   this.isOnFridge = false;
   Alphabet.all.push(this);
+}
+
+function Word(word) {
+  this.word = word;
+  this.left = 0;
+  this.top = 0;
+  this.onFridge = false;
+  Word.all.push(this);
 }
 
 let words = localStorage.getItem('words');
@@ -34,6 +43,7 @@ const tropical = document.getElementById('tropical');
 const underWater = document.getElementById('underwater');
 const surprise = document.getElementById('surprise');
 const reset = document.getElementById('reset');
+const trash = document.getElementById('trash');
 const save = document.getElementById('save');
 const myWords = document.getElementById('show-words');
 
@@ -226,13 +236,54 @@ function addWordToBank() {
 function showWords(event) {
   for(let word of wordBank) {
     console.log(word);
+    new Word(word);
 
     let newWord = document.createElement('p');
     newWord.textContent = word;
     newWord.setAttribute('draggable', 'true');
+    newWord.setAttribute('id', word);
     newWord.addEventListener('dragstart', dragStartHandler);
     myFreezer.appendChild(newWord);
   }
+}
+
+function removeItemHandler(event) {
+  event.preventDefault();
+  var data = event.dataTransfer.getData("text/plain");
+  event.target.appendChild(document.getElementById(data));
+
+  let elementSelected = document.getElementById(data);
+  trash.removeChild(elementSelected);
+
+  wordBank = wordBank.filter(word => {
+    if(word !== elementSelected.id) console.log('they equal');    
+    return word !== elementSelected.id
+  });
+
+  localStorage.setItem('words', JSON.stringify(wordBank));
+
+  // elementSelected.style.position = 'absolute';
+  // elementSelected.style.zIndex = 1000;
+  // elementSelected.style.left = event.pageX - elementSelected.offsetWidth / 2 + 'px';
+  // elementSelected.style.top = event.pageY - elementSelected.offsetHeight / 2 + 'px';
+
+  // for (let i = 0; i < Word.all.length; i++) {
+  //   if (data === Word.all[i].word) {
+  //     Word.all[i].left = elementSelected.style.left;
+  //     Word.all[i].top = elementSelected.style.top;
+
+  //     if (event.target.id === 'target') {
+  //       Alphabet.all[i].isOnFridge = true;
+  //     }
+
+  //     if (event.target.id === 'freezer') {
+  //       Alphabet.all[i].isOnFridge = false;
+  //     }
+  //   }
+  // }
+
+  // localStorage.setItem('alphabet', JSON.stringify(Alphabet.all));
+
 }
 
 createLetters();
@@ -243,6 +294,9 @@ myDiv.addEventListener('drop', dropHandler);
 
 myFreezer.addEventListener('dragover', dragOverHandler);
 myFreezer.addEventListener('drop', dropHandler);
+
+trash.addEventListener('dragover', dragOverHandler);
+trash.addEventListener('drop', removeItemHandler)
 
 tropical.addEventListener('click', changeTheme);
 underWater.addEventListener('click', changeTheme);
