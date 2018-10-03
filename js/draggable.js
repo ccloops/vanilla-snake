@@ -34,6 +34,7 @@ const tropical = document.getElementById('tropical');
 const underWater = document.getElementById('underwater');
 const reset = document.getElementById('reset');
 const save = document.getElementById('save');
+const myWords = document.getElementById('show-words');
 
 function changeTheme(event) {
   event.preventDefault();
@@ -171,19 +172,61 @@ function addWordToBank() {
   }
   if(!wordBank.includes(newWord)) {
     wordBank.push(newWord);
-    console.log('word created!');
-    alert('saved!');
+
+    let savedMessage = document.createElement('h3');
+    savedMessage.textContent = 'saved!';
+    save.appendChild(savedMessage);
+
+    setTimeout(function () { 
+      save.removeChild(savedMessage);
+    }, 1000);
+
   } else if(!wordStaging.length) {
-    alert('no letters on board!'); 
+
+    let noLettersMessage = document.createElement('h3');
+    noLettersMessage.textContent = 'no letters on board!';
+    save.appendChild(noLettersMessage);
+
+    setTimeout(function () {
+      save.removeChild(noLettersMessage);
+    }, 1000);
+
   } else if (wordBank.includes(newWord)) {
-    console.log('word already exists!');
-    alert('word already exists!');
+
+    let wordExistsMessage = document.createElement('h3');
+    wordExistsMessage.textContent = 'word already exists!';
+    save.appendChild(wordExistsMessage);
+
+    setTimeout(function () {
+      save.removeChild(wordExistsMessage);
+    }, 1000); 
+
   } else {
+
+    let wordExistsMessage = document.createElement('h3');
+    wordExistsMessage.textContent = 'word already exists!';
+    save.appendChild(wordExistsMessage);
+
+    setTimeout(function () {
+      save.removeChild(wordExistsMessage);
+    }, 1000); 
+
     alert('something went wrong');
   }
   wordStaging = [];
-  console.log(wordBank);
   localStorage.setItem('words', JSON.stringify(wordBank));
+}
+
+function showWords(event) {
+  for(let word of wordBank) {
+    console.log(word);
+
+    let newWord = document.createElement('p');
+    newWord.textContent = word;
+    newWord.setAttribute('draggable', 'true');
+    newWord.addEventListener('dragstart', dragStartHandler);
+    myFreezer.appendChild(newWord);
+  }
 }
 
 createLetters();
@@ -200,3 +243,4 @@ underWater.addEventListener('click', changeTheme);
 
 reset.addEventListener('click', resetLetters);
 save.addEventListener('click', captureWord);
+myWords.addEventListener('click', showWords);
