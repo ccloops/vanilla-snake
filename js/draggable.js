@@ -145,7 +145,7 @@ function renderLetterPosition() {
 
 function resetLetters(event) {
   Alphabet.all = [];
-  localStorage.clear();
+  localStorage.setItem('alphabet', JSON.stringify([]));
   instantiateAlphabet();
   location.reload();
 }
@@ -161,12 +161,6 @@ function captureWord(event) {
     return parseInt(a.left) - parseInt(b.left); 
   });
 
-  if(wordStaging.length) {
-    alert('saved!');
-  } else {
-    alert('no letters on board!');
-  }
-
   addWordToBank();
 }
 
@@ -178,8 +172,14 @@ function addWordToBank() {
   if(!wordBank.includes(newWord)) {
     wordBank.push(newWord);
     console.log('word created!');
-  } else {
+    alert('saved!');
+  } else if(!wordStaging.length) {
+    alert('no letters on board!'); 
+  } else if (wordBank.includes(newWord)) {
     console.log('word already exists!');
+    alert('word already exists!');
+  } else {
+    alert('something went wrong');
   }
   wordStaging = [];
   console.log(wordBank);
