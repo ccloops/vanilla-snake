@@ -1,6 +1,8 @@
 'use strict';
 
 Alphabet.all = [];
+let wordStaging = [];
+let wordBank = [];
 
 function Alphabet(letter) {
   this.letter = letter;
@@ -23,6 +25,7 @@ const myDiv = document.getElementById('target');
 const tropical = document.getElementById('tropical');
 const underWater = document.getElementById('underwater');
 const reset = document.getElementById('reset');
+const save = document.getElementById('save');
 
 function changeTheme(event) {
   event.preventDefault();
@@ -100,8 +103,6 @@ function dropHandler(event) {
   elementSelected.style.zIndex = 1000;
   elementSelected.style.left = event.pageX - elementSelected.offsetWidth / 2 + 'px';
   elementSelected.style.top = event.pageY - elementSelected.offsetHeight / 2 + 'px';
-
-
   
   for(let i = 0; i < Alphabet.all.length; i++) {
     if(data === Alphabet.all[i].letter) {
@@ -141,16 +142,36 @@ function resetLetters(event) {
   location.reload();
 }
 
-console.log(myFreezer.querySelectorAll('p'));
+function captureWord(event) {
+  event.preventDefault();
+  for(let i = 0; i < Alphabet.all.length; i++) {
+    if(Alphabet.all[i].isOnFridge === true) {
+      wordStaging.push(Alphabet.all[i]);
+    }
+  }
+  wordStaging.sort(function (a, b) {
+    return parseInt(a.left) - parseInt(b.left); 
+  });
 
-// console.log(myDiv.contains(Alphabet.all[0]));
+  if(wordStaging.length) {
+    alert('saved!');
+  } else {
+    alert('no letters on board!');
+  }
 
-// for(let i = 0; i < Alphabet.all.length; i++) {
-  // console.log(Alphabet.all[i]);
-  // if(Alphabet.all[i].parentNode === myDiv ) {
-    // console.log(Alphabet.all[i].letter);
-  // }
-// }
+  addWordToBank();
+}
+
+function addWordToBank() {
+  let newWord = '';
+  for(let key of wordStaging) {
+    newWord += key.letter;
+  }
+  wordBank.push(newWord);
+  wordStaging = [];
+  console.log(wordBank);
+  console.log(wordStaging);
+}
 
 createLetters();
 renderLetterPosition();
@@ -165,3 +186,4 @@ tropical.addEventListener('click', changeTheme);
 underWater.addEventListener('click', changeTheme);
 
 reset.addEventListener('click', resetLetters);
+save.addEventListener('click', captureWord);

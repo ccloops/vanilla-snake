@@ -124,7 +124,7 @@ footer {
   text-align: center;
 }
 
-#reset {
+#reset, #save {
   margin: 0 auto;
   display: block;
 }
