@@ -2,7 +2,7 @@
 
 Alphabet.all = [];
 let wordStaging = [];
-let wordBank = [];
+let wordBank;
 
 function Alphabet(letter) {
   this.letter = letter;
@@ -10,6 +10,14 @@ function Alphabet(letter) {
   this.top = 0;
   this.isOnFridge = false;
   Alphabet.all.push(this);
+}
+
+let words = localStorage.getItem('words');
+
+if(!words) {
+  wordBank = [];
+} else {
+  wordBank = JSON.parse(words);
 }
 
 let storedAlphabet = localStorage.getItem('alphabet');
@@ -167,10 +175,15 @@ function addWordToBank() {
   for(let key of wordStaging) {
     newWord += key.letter;
   }
-  wordBank.push(newWord);
+  if(!wordBank.includes(newWord)) {
+    wordBank.push(newWord);
+    console.log('word created!');
+  } else {
+    console.log('word already exists!');
+  }
   wordStaging = [];
   console.log(wordBank);
-  console.log(wordStaging);
+  localStorage.setItem('words', JSON.stringify(wordBank));
 }
 
 createLetters();
