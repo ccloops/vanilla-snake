@@ -6,6 +6,7 @@ function Alphabet(letter) {
   this.letter = letter;
   this.left = 0;
   this.top = 0;
+  this.isOnFridge = false;
   Alphabet.all.push(this);
 }
 
@@ -130,10 +131,16 @@ function resetLetters(event) {
   location.reload();
 }
 
+// for(let i = 0; i < Alphabet.all.length; i++) {
+//   if(Alphabet.all[i].parentNode === myDiv) {
+//     Alphabet.all[i].isOnFridge = true;
+//     console.log('matches div');
+//   }
+// }
+
 
 createLetters();
 renderLetterPosition();
-
 
 myDiv.addEventListener('dragover', dragOverHandler);
 myDiv.addEventListener('drop', dropHandler);

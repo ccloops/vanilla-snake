@@ -33,8 +33,9 @@ a:nth-child(4) {
   font-family: 'Press Start 2P', cursive;
 }
 
-div, section {
-  background-color: goldenrod;  
+section {
+  background-image: url('../img/botanic-botanical-bright-827058.jpg');  
+  background-size: cover;
 }
 
 section {
@@ -110,11 +111,11 @@ button:hover {
 }
 
 .tropical {
-  background-color: goldenRod;
+  background-image: url('../img/coconut-coconut-trees-island-804410.jpg');
 }
 
 .underwater {
-  background-color: turquoise;
+  background-image: url('../img/abstract-aqua-blue-261403.jpg');
 }
 
 footer {
