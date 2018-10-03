@@ -114,7 +114,7 @@ function dragStartHandler(event) {
 
 function dragOverHandler(event) {
   event.preventDefault();
-  event.dataTransfer.dropEffect = "move";
+  event.dataTransfer.dropEffect = "move"
 }
 
 function dropHandler(event) {
@@ -234,30 +234,17 @@ function addWordToBank() {
 }
 
 function showWords(event) {
-  // event.preventDefault();
+  for(let word of wordBank) {
+    console.log(word);
+    new Word(word);
 
-  // console.log(!wordBank.length);
-
-  // if(!wordBank.length) {
-  //   alert('no words');
-  // } else {
-
-  // while(myFreezer.firstChild) {
-  //   myFreezer.removeChild(myFreezer.firstChild);
-  // }
-
-    for(let word of wordBank) {
-      console.log(word);
-      new Word(word);
-
-      let newWord = document.createElement('p');
-      newWord.textContent = word;
-      newWord.setAttribute('draggable', 'true');
-      newWord.setAttribute('id', word);
-      newWord.addEventListener('dragstart', dragStartHandler);
-      myFreezer.appendChild(newWord);
-    }
-  // }
+    let newWord = document.createElement('p');
+    newWord.textContent = word;
+    newWord.setAttribute('draggable', 'true');
+    newWord.setAttribute('id', word);
+    newWord.addEventListener('dragstart', dragStartHandler);
+    myFreezer.appendChild(newWord);
+  }
 }
 
 function removeItemHandler(event) {
@@ -274,6 +261,28 @@ function removeItemHandler(event) {
   });
 
   localStorage.setItem('words', JSON.stringify(wordBank));
+
+  // elementSelected.style.position = 'absolute';
+  // elementSelected.style.zIndex = 1000;
+  // elementSelected.style.left = event.pageX - elementSelected.offsetWidth / 2 + 'px';
+  // elementSelected.style.top = event.pageY - elementSelected.offsetHeight / 2 + 'px';
+
+  // for (let i = 0; i < Word.all.length; i++) {
+  //   if (data === Word.all[i].word) {
+  //     Word.all[i].left = elementSelected.style.left;
+  //     Word.all[i].top = elementSelected.style.top;
+
+  //     if (event.target.id === 'target') {
+  //       Alphabet.all[i].isOnFridge = true;
+  //     }
+
+  //     if (event.target.id === 'freezer') {
+  //       Alphabet.all[i].isOnFridge = false;
+  //     }
+  //   }
+  // }
+
+  // localStorage.setItem('alphabet', JSON.stringify(Alphabet.all));
 
 }
 
