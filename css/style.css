@@ -47,11 +47,12 @@ section {
 
 p {
   background-color: gold;
-  border: 2px dashed black;
-  padding: 1em;
-  margin: 1em;
-  width: 5px;
+  padding: 0.5em;
+  margin: 0.5em;
+  font-size: 2em;
   display: inline-block;
+  text-transform: uppercase;
+  font-family: 'Press Start 2P', cursive;
 }
 
 p:hover {

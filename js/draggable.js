@@ -93,18 +93,28 @@ function dropHandler(event) {
   event.preventDefault();
   var data = event.dataTransfer.getData("text/plain");
   event.target.appendChild(document.getElementById(data));
-
+  
   let elementSelected = document.getElementById(data);
-
+  
   elementSelected.style.position = 'absolute';
   elementSelected.style.zIndex = 1000;
   elementSelected.style.left = event.pageX - elementSelected.offsetWidth / 2 + 'px';
   elementSelected.style.top = event.pageY - elementSelected.offsetHeight / 2 + 'px';
 
+
+  
   for(let i = 0; i < Alphabet.all.length; i++) {
     if(data === Alphabet.all[i].letter) {
       Alphabet.all[i].left = elementSelected.style.left;
       Alphabet.all[i].top = elementSelected.style.top;
+
+      if (event.target.id === 'target') {
+        Alphabet.all[i].isOnFridge = true;
+      }
+
+      if (event.target.id === 'freezer') {
+        Alphabet.all[i].isOnFridge = false;
+      }
     }
   }
 
@@ -131,13 +141,16 @@ function resetLetters(event) {
   location.reload();
 }
 
-// for(let i = 0; i < Alphabet.all.length; i++) {
-//   if(Alphabet.all[i].parentNode === myDiv) {
-//     Alphabet.all[i].isOnFridge = true;
-//     console.log('matches div');
-//   }
-// }
+console.log(myFreezer.querySelectorAll('p'));
 
+// console.log(myDiv.contains(Alphabet.all[0]));
+
+// for(let i = 0; i < Alphabet.all.length; i++) {
+  // console.log(Alphabet.all[i]);
+  // if(Alphabet.all[i].parentNode === myDiv ) {
+    // console.log(Alphabet.all[i].letter);
+  // }
+// }
 
 createLetters();
 renderLetterPosition();
