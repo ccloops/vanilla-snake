@@ -98,7 +98,7 @@ p:hover {
 }
 
 button {
-  margin: 1em;
+  margin: 0.5em;
   padding: 1em;
   border-radius: 10%;
   background-color: darkSlateGray;
@@ -117,6 +117,10 @@ button:hover {
 
 .underwater {
   background-image: url('../img/abstract-aqua-blue-261403.jpg');
+}
+
+.surprise {
+  background-image: url('../img/me-mooshy.JPG');
 }
 
 footer {

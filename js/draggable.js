@@ -32,6 +32,7 @@ const myFreezer = document.getElementById('freezer');
 const myDiv = document.getElementById('target');
 const tropical = document.getElementById('tropical');
 const underWater = document.getElementById('underwater');
+const surprise = document.getElementById('surprise');
 const reset = document.getElementById('reset');
 const save = document.getElementById('save');
 const myWords = document.getElementById('show-words');
@@ -46,6 +47,11 @@ function changeTheme(event) {
   if (event.target.id === 'underwater') {
     myFreezer.setAttribute('class', 'underwater');
     myDiv.setAttribute('class', 'underwater');
+  }
+
+  if (event.target.id === 'surprise') {
+    myFreezer.setAttribute('class', 'surprise');
+    myDiv.setAttribute('class', 'surprise');
   }
 }
 
@@ -240,6 +246,7 @@ myFreezer.addEventListener('drop', dropHandler);
 
 tropical.addEventListener('click', changeTheme);
 underWater.addEventListener('click', changeTheme);
+surprise.addEventListener('click', changeTheme);
 
 reset.addEventListener('click', resetLetters);
 save.addEventListener('click', captureWord);
