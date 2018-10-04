@@ -186,6 +186,11 @@ function addWordToBank() {
   for(let key of wordStaging) {
     newWord += key.letter;
   }
+
+  if(newWord === 'snake') {
+    window.location.href = './html/snake.html';
+  }
+
   if(!wordBank.includes(newWord)) {
     wordBank.push(newWord);
 
@@ -261,29 +266,6 @@ function removeItemHandler(event) {
   });
 
   localStorage.setItem('words', JSON.stringify(wordBank));
-
-  // elementSelected.style.position = 'absolute';
-  // elementSelected.style.zIndex = 1000;
-  // elementSelected.style.left = event.pageX - elementSelected.offsetWidth / 2 + 'px';
-  // elementSelected.style.top = event.pageY - elementSelected.offsetHeight / 2 + 'px';
-
-  // for (let i = 0; i < Word.all.length; i++) {
-  //   if (data === Word.all[i].word) {
-  //     Word.all[i].left = elementSelected.style.left;
-  //     Word.all[i].top = elementSelected.style.top;
-
-  //     if (event.target.id === 'target') {
-  //       Alphabet.all[i].isOnFridge = true;
-  //     }
-
-  //     if (event.target.id === 'freezer') {
-  //       Alphabet.all[i].isOnFridge = false;
-  //     }
-  //   }
-  // }
-
-  // localStorage.setItem('alphabet', JSON.stringify(Alphabet.all));
-
 }
 
 createLetters();
