@@ -164,7 +164,7 @@ function resetLetters(event) {
   Alphabet.all = [];
   localStorage.setItem('alphabet', JSON.stringify([]));
   instantiateAlphabet();
-  location.reload();
+  myDiv.innerHTML = '';
 }
 
 function captureWord(event) {
@@ -294,3 +294,6 @@ surprise.addEventListener('click', changeTheme);
 reset.addEventListener('click', resetLetters);
 save.addEventListener('click', captureWord);
 myWords.addEventListener('click', showWords);
+
+
+// reset is not working 
