@@ -240,16 +240,23 @@ function addWordToBank() {
 
 function showWords(event) {
   for(let word of wordBank) {
-    console.log(word);
-    new Word(word);
 
-    let newWord = document.createElement('p');
-    newWord.textContent = word;
-    newWord.setAttribute('draggable', 'true');
-    newWord.setAttribute('id', word);
-    newWord.addEventListener('dragstart', dragStartHandler);
-    myFreezer.appendChild(newWord);
+    if(word === '') {
+      console.log('word cannot be blank');
+    } else {
+        new Word(word);
+    
+        let newWord = document.createElement('p');
+        newWord.textContent = word;
+        newWord.setAttribute('draggable', 'true');
+        newWord.setAttribute('id', word);
+        newWord.addEventListener('dragstart', dragStartHandler);
+        myFreezer.appendChild(newWord);
+    }
+    console.log(word);
   }
+
+  wordBank = wordBank.filter(word => word !== '');
 }
 
 function removeItemHandler(event) {
