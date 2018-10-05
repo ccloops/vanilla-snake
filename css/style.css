@@ -100,20 +100,6 @@ p:hover {
   }
 }
 
-.tropical {
-  background-image: url('../img/coconut-coconut-trees-island-804410.jpg');
-}
-
-.underwater {
-  background-image: url('../img/abstract-aqua-blue-261403.jpg');
-}
-
-.surprise {
-  /* background-image: url('../img/me-mooshy.JPG'); */
-  background-image: url('../img/space-photo.JPG');
-  background-size: 10em;
-}
-
 footer {
   font-size: 2em;
   text-align: center;
