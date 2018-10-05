@@ -109,7 +109,9 @@ p:hover {
 }
 
 .surprise {
-  background-image: url('../img/me-mooshy.JPG');
+  /* background-image: url('../img/me-mooshy.JPG'); */
+  background-image: url('../img/space-photo.JPG');
+  background-size: 10em;
 }
 
 footer {
