@@ -23,7 +23,7 @@ function Word(word) {
 
 let words = localStorage.getItem('words');
 
-if(!words) {
+if (!words) {
   wordBank = [];
 } else {
   wordBank = JSON.parse(words);
@@ -31,7 +31,7 @@ if(!words) {
 
 let storedAlphabet = localStorage.getItem('alphabet');
 
-if(!storedAlphabet) {
+if (!storedAlphabet) {
   instantiateAlphabet();
 } else {
   Alphabet.all = JSON.parse(storedAlphabet);
@@ -49,7 +49,7 @@ const myWords = document.getElementById('show-words');
 
 function changeTheme(event) {
   event.preventDefault();
-  if(event.target.id === 'tropical') {
+  if (event.target.id === 'tropical') {
     myDiv.style.backgroundImage = `url(./img/coconut.jpg)`
     myFreezer.style.backgroundImage = `url(./img/coconut.jpg)` 
   }
@@ -101,7 +101,7 @@ function instantiateAlphabet() {
 }
 
 function createLetters() {
-  for(let i = 0; i < Alphabet.all.length; i++) {
+  for (let i = 0; i < Alphabet.all.length; i++) {
     let magnet = document.createElement('p');
     magnet.textContent = Alphabet.all[i].letter;
     magnet.setAttribute('draggable', 'true');
@@ -133,8 +133,8 @@ function dropHandler(event) {
   elementSelected.style.left = event.pageX - elementSelected.offsetWidth / 2 + 'px';
   elementSelected.style.top = event.pageY - elementSelected.offsetHeight / 2 + 'px';
   
-  for(let i = 0; i < Alphabet.all.length; i++) {
-    if(data === Alphabet.all[i].letter) {
+  for (let i = 0; i < Alphabet.all.length; i++) {
+    if (data === Alphabet.all[i].letter) {
       Alphabet.all[i].left = elementSelected.style.left;
       Alphabet.all[i].top = elementSelected.style.top;
 
@@ -153,8 +153,8 @@ function dropHandler(event) {
 }
 
 function renderLetterPosition() {
-  for(let i in Alphabet.all) {
-    if(Alphabet.all[i].left !== 0) {
+  for (let i in Alphabet.all) {
+    if (Alphabet.all[i].left !== 0) {
       let elementSelected = document.getElementById(Alphabet.all[i].letter);
       elementSelected.style.position = 'absolute';
       elementSelected.style.zIndex = 1000;
@@ -169,7 +169,7 @@ function resetLetters(event) {
   localStorage.setItem('alphabet', JSON.stringify([]));
   instantiateAlphabet();
   // myDiv.innerHTML = '';
-  for(let i in Alphabet.all) {
+  for (let i in Alphabet.all) {
       let elementSelected = document.getElementById(Alphabet.all[i].letter);
       // elementSelected.style.position = 'absolute';
       elementSelected.style.padding = '0.5em';
@@ -186,8 +186,8 @@ function resetLetters(event) {
 
 function captureWord(event) {
   event.preventDefault();
-  for(let i = 0; i < Alphabet.all.length; i++) {
-    if(Alphabet.all[i].isOnFridge === true) {
+  for (let i = 0; i < Alphabet.all.length; i++) {
+    if (Alphabet.all[i].isOnFridge === true) {
       wordStaging.push(Alphabet.all[i]);
     }
   }
@@ -200,15 +200,15 @@ function captureWord(event) {
 
 function addWordToBank() {
   let newWord = '';
-  for(let key of wordStaging) {
+  for (let key of wordStaging) {
     newWord += key.letter;
   }
 
-  if(newWord === 'snake') {
+  if (newWord === 'snake') {
     window.location.href = './html/snake.html';
   }
 
-  if(!wordBank.includes(newWord)) {
+  if (!wordBank.includes(newWord)) {
     wordBank.push(newWord);
 
     let savedMessage = document.createElement('h3');
@@ -219,7 +219,7 @@ function addWordToBank() {
       save.removeChild(savedMessage);
     }, 1000);
 
-  } else if(!wordStaging.length) {
+  } else if (!wordStaging.length) {
 
     let noLettersMessage = document.createElement('h3');
     noLettersMessage.textContent = 'no letters on board!';
@@ -256,9 +256,9 @@ function addWordToBank() {
 }
 
 function showWords(event) {
-  for(let word of wordBank) {
+  for (let word of wordBank) {
 
-    if(word === '') {
+    if (word === '') {
       console.log('word cannot be blank');
     } else {
         new Word(word);
@@ -285,7 +285,7 @@ function removeItemHandler(event) {
   trash.removeChild(elementSelected);
 
   wordBank = wordBank.filter(word => {
-    if(word !== elementSelected.id) console.log('they equal');    
+    if (word !== elementSelected.id) console.log('they equal');    
     return word !== elementSelected.id
   });
 

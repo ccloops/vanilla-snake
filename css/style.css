@@ -142,3 +142,10 @@ div button {
 div button:hover {
   color: darkSlateGray;
 }
+
+select {
+  width: 10%;
+  height: 10%;
+  background-color: lightblue;
+  font-family: 'Audiowide', cursive;
+}
