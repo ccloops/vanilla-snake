@@ -50,29 +50,22 @@ const myWords = document.getElementById('show-words');
 function changeTheme(event) {
   event.preventDefault();
   if(event.target.id === 'tropical') {
-    // myFreezer.setAttribute('class', 'tropical');
-    // myDiv.setAttribute('class', 'tropical');
     myDiv.style.backgroundImage = `url(../img/coconut-coconut-trees-island-804410.jpg)`
     myFreezer.style.backgroundImage = `url(../img/coconut-coconut-trees-island-804410.jpg)` 
   }
 
   if (event.target.id === 'underwater') {
-    // myFreezer.setAttribute('class', 'underwater');
-    // myDiv.setAttribute('class', 'underwater');
-
-    myDiv.style.backgroundImage = `url(./img//abstract - aqua - blue - 261403.jpg)`
-    myFreezer.style.backgroundImage = `url(./img//abstract - aqua - blue - 261403.jpg)` 
+    myDiv.style.backgroundImage = `url(./img/abstract-aqua-blue-261403.jpg)`
+    myFreezer.style.backgroundImage = `url(./img/abstract-aqua-blue-261403.jpg)` 
   }
 
   if (event.target.id === 'surprise') {
-
     let images = ['./img/space-photo.JPG', './img/me-mooshy.JPG'];
     let randomIndex = Math.floor(Math.random() * images.length );
-
-    // myFreezer.setAttribute('class', 'surprise');
-    // myDiv.setAttribute('class', 'surprise');
     myDiv.style.backgroundImage = 'url("' + images[randomIndex]+ '")';
     myFreezer.style.backgroundImage = 'url("' + images[randomIndex] + '")';
+    myDiv.style.backgroundSize = '10em';
+    myFreezer.style.backgroundSize = '10em';
   }
 }
 
@@ -318,6 +311,3 @@ surprise.addEventListener('click', changeTheme);
 reset.addEventListener('click', resetLetters);
 save.addEventListener('click', captureWord);
 myWords.addEventListener('click', showWords);
-
-
-// reset is not working 

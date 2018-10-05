@@ -1,5 +1,5 @@
 body {
-  background-color: salmon;
+  background-color: red;
 }
 
 header ul {
@@ -42,20 +42,23 @@ section {
   width: 80%;
   height: 300px;
   margin: 3em auto;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16),
-      0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+  -webkit-box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
+  -moz-box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
+  box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
 }
 
 p {
-  background-color: gold;
+  background-color: rgb(0, 255, 229);
+  color: red;
   padding: 0.5em;
   margin: 0.5em;
   font-size: 2em;
   display: inline-block;
   text-transform: uppercase;
   font-family: 'Press Start 2P', cursive;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16),
-  0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+  -webkit-box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
+  -moz-box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
+  box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
 }
 
 p:hover {
@@ -126,7 +129,7 @@ div {
 }
 
 div button {
-  background-color: salmon;
+  background-color: red;
   border: none;
   font-family: 'Audiowide', cursive;
   line-height: 1.5;
