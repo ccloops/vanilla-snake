@@ -50,8 +50,8 @@ const myWords = document.getElementById('show-words');
 function changeTheme(event) {
   event.preventDefault();
   if(event.target.id === 'tropical') {
-    myDiv.style.backgroundImage = `url(../img/coconut-coconut-trees-island-804410.jpg)`
-    myFreezer.style.backgroundImage = `url(../img/coconut-coconut-trees-island-804410.jpg)` 
+    myDiv.style.backgroundImage = `url(./img/coconut.jpg)`
+    myFreezer.style.backgroundImage = `url(./img/coconut.jpg)` 
   }
 
   if (event.target.id === 'underwater') {
