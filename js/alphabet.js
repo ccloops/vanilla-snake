@@ -168,19 +168,10 @@ function resetLetters(event) {
   Alphabet.all = [];
   localStorage.setItem('alphabet', JSON.stringify([]));
   instantiateAlphabet();
-  // myDiv.innerHTML = '';
   for (let i in Alphabet.all) {
       let elementSelected = document.getElementById(Alphabet.all[i].letter);
-      // elementSelected.style.position = 'absolute';
       elementSelected.style.padding = '0.5em';
       elementSelected.style.left = 0;
-      // elementSelected.style.top = 0;
-      // elementSelected.zIndex = 'none';
-      // elementSelected.style.post
-
-      // padding: 0.5em;
-      // margin: 0.5em;
-      // font - size: 2em;
   }
 }
 
