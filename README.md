@@ -1,5 +1,7 @@
 # Drag and Drop Fridge Magnets Rendition
 
+## Vanilla!
+
 ## Drag and Drop Fridge Magnets onto the board to create new words
 
 ### Use letters to create words to add to your word bank 
