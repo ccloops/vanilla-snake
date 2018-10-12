@@ -1,6 +1,8 @@
 # Drag and Drop Fridge Magnets Rendition
 
-## Vanilla!
+## Built with
+
+Vanilla JS
 
 ## Drag and Drop Fridge Magnets onto the board to create new words
 
