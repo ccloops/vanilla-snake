@@ -39,6 +39,7 @@ if (!storedAlphabet) {
 
 const myFreezer = document.getElementById('freezer');
 const myDiv = document.getElementById('target');
+const wordsContainer = document.getElementById('words');
 const tropical = document.getElementById('tropical');
 const underWater = document.getElementById('underwater');
 const surprise = document.getElementById('surprise');
@@ -137,10 +138,10 @@ function dropHandler(event) {
   //  newElement.style.left = event.pageX - elementSelected.offsetWidth / 2 + 'px';
   //  newElement.style.top = event.pageY - elementSelected.offsetHeight / 2 + 'px';
   
-  // elementSelected.style.position = 'absolute';
-  // elementSelected.style.zIndex = 1000;
-  // elementSelected.style.left = event.pageX - elementSelected.offsetWidth / 2 + 'px';
-  // elementSelected.style.top = event.pageY - elementSelected.offsetHeight / 2 + 'px';
+  elementSelected.style.position = 'absolute';
+  elementSelected.style.zIndex = 1000;
+  elementSelected.style.left = event.pageX - elementSelected.offsetWidth / 2 + 'px';
+  elementSelected.style.top = event.pageY - elementSelected.offsetHeight / 2 + 'px';
   
   for (let i = 0; i < Alphabet.all.length; i++) {
     if (data === Alphabet.all[i].letter) {
@@ -182,6 +183,7 @@ function resetLetters(event) {
       elementSelected.style.padding = '0.5em';
       elementSelected.style.left = 0;
   }
+  location.reload();
 }
 
 function captureWord(event) {
@@ -270,7 +272,7 @@ function showWords(event) {
         newWord.setAttribute('draggable', 'true');
         newWord.setAttribute('id', word);
         newWord.addEventListener('dragstart', dragStartHandler);
-        myFreezer.appendChild(newWord);
+        wordsContainer.appendChild(newWord);
     }
     console.log(word);
   }
@@ -300,8 +302,8 @@ renderLetterPosition();
 myDiv.addEventListener('dragover', dragOverHandler);
 myDiv.addEventListener('drop', dropHandler);
 
-myFreezer.addEventListener('dragover', dragOverHandler);
-myFreezer.addEventListener('drop', dropHandler);
+// myFreezer.addEventListener('dragover', dragOverHandler);
+// myFreezer.addEventListener('drop', dropHandler);
 
 trash.addEventListener('dragover', dragOverHandler);
 trash.addEventListener('drop', removeItemHandler)

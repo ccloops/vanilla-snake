@@ -13,9 +13,9 @@ a {
   height: 700px;
 }
 
-section:first-child {
+section:first-child, #words {
   display: grid;
-  grid-template-columns: 6em 6em 6em;
+  grid-template-columns: 5em 5em 5em 5em;
   background-color: lightcoral;
   margin-right: 1em;
   -webkit-box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
@@ -23,22 +23,27 @@ section:first-child {
   box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
 }
 
-section:last-child {
+section:nth-child(2) {
   background-image: url('../img/botanic-botanical-bright-827058.jpg');
   background-size: cover;
   width: 80%;
+  margin-right: 1em;
   -webkit-box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
   -moz-box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
   box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
 }
 
+section p {
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+}
+
 p {
-  /* background-color: rgb(0, 255, 229); */
-  /* color: red; */
-  /* padding: 0.5em; */
-  /* margin: 0.5em; */
-  /* font-size: 2em; */
-  /* width: 0.4em; */
+  /* padding: 0.3em; */
+  color: white;
+  border: 2px inset white;
+  text-align: center;
   display: grid;
   text-transform: uppercase;
   font-family: 'Press Start 2P', cursive;
@@ -52,7 +57,7 @@ p:hover {
   animation-iteration-count: infinite;
 }
 
-@keyframes shake {
+/* @keyframes shake {
   0% {
     transform: translate(1px, 1px) rotate(0deg);
   }
@@ -86,7 +91,7 @@ p:hover {
   100% {
     transform: translate(1px, -2px) rotate(-1deg);
   }
-}
+} */
 
 /* footer {
   font-size: 2em;
