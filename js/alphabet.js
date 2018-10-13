@@ -5,6 +5,14 @@ Word.all = [];
 let wordStaging = [];
 let wordBank;
 
+const myLetters = document.getElementById('letters');
+const myDiv = document.getElementById('drop-zone');
+const wordsContainer = document.getElementById('words');
+const dropDown = document.getElementById('drop-down');
+const reset = document.getElementById('reset');
+const trash = document.getElementById('trash');
+const save = document.getElementById('save');
+
 function Alphabet(letter) {
   this.letter = letter;
   this.left = 0;
@@ -27,6 +35,7 @@ if (!words) {
   wordBank = [];
 } else {
   wordBank = JSON.parse(words);
+  showWords();
 }
 
 let storedAlphabet = localStorage.getItem('alphabet');
@@ -37,36 +46,58 @@ if (!storedAlphabet) {
   Alphabet.all = JSON.parse(storedAlphabet);
 }
 
-const myFreezer = document.getElementById('freezer');
-const myDiv = document.getElementById('target');
-const tropical = document.getElementById('tropical');
-const underWater = document.getElementById('underwater');
-const surprise = document.getElementById('surprise');
-const reset = document.getElementById('reset');
-const trash = document.getElementById('trash');
-const save = document.getElementById('save');
-const myWords = document.getElementById('show-words');
+let storedTheme = localStorage.getItem('theme');
 
-function changeTheme(event) {
-  event.preventDefault();
-  if (event.target.id === 'tropical') {
+if(storedTheme) {
+  console.log('hello');
+  if (storedTheme === 'tropical') {
+    console.log('hitting tropical');
     myDiv.style.backgroundImage = `url(./img/coconut.jpg)`
-    myFreezer.style.backgroundImage = `url(./img/coconut.jpg)` 
+    myDiv.style.backgroundSize = 'cover';
+    localStorage.setItem('theme', JSON.stringify(event.target.value));
   }
 
-  if (event.target.id === 'underwater') {
+  if (storedTheme === 'underwater') {
+    console.log('hitting underwater');
     myDiv.style.backgroundImage = `url(./img/abstract-aqua-blue-261403.jpg)`
-    myFreezer.style.backgroundImage = `url(./img/abstract-aqua-blue-261403.jpg)` 
+    myDiv.style.backgroundSize = 'cover';
+    localStorage.setItem('theme', JSON.stringify(event.target.value));
   }
 
-  if (event.target.id === 'surprise') {
+  if (storedTheme === 'surprise') {
+    console.log('hitting surprise');
     let images = ['./img/space-photo.JPG', './img/me-mooshy.JPG'];
-    let randomIndex = Math.floor(Math.random() * images.length );
-    myDiv.style.backgroundImage = 'url("' + images[randomIndex]+ '")';
-    myFreezer.style.backgroundImage = 'url("' + images[randomIndex] + '")';
+    let randomIndex = Math.floor(Math.random() * images.length);
+    myDiv.style.backgroundImage = 'url("' + images[randomIndex] + '")';
     myDiv.style.backgroundSize = '10em';
-    myFreezer.style.backgroundSize = '10em';
+    localStorage.setItem('theme', JSON.stringify(event.target.value));
   }
+}
+
+function handleTheme(event) {
+  event.preventDefault();
+  console.log(event.target.value);
+    if (event.target.value === 'tropical') {
+      myDiv.style.backgroundImage = `url(./img/coconut.jpg)`
+      myDiv.style.backgroundSize = 'cover';
+      localStorage.setItem('theme', JSON.stringify(event.target.value));
+    }
+
+    if (event.target.value === 'underwater') {
+      console.log('hitting underwater');
+      myDiv.style.backgroundImage = `url(./img/abstract-aqua-blue-261403.jpg)`
+      myDiv.style.backgroundSize = 'cover';
+      localStorage.setItem('theme', JSON.stringify(event.target.value));
+    }
+
+    if (event.target.value === 'surprise') {
+      console.log('hitting surprise');
+      let images = ['./img/space-photo.JPG', './img/me-mooshy.JPG'];
+      let randomIndex = Math.floor(Math.random() * images.length);
+      myDiv.style.backgroundImage = 'url("' + images[randomIndex] + '")';
+      myDiv.style.backgroundSize = '10em';
+      localStorage.setItem('theme', JSON.stringify(event.target.value));
+    }
 }
 
 function instantiateAlphabet() {
@@ -107,7 +138,7 @@ function createLetters() {
     magnet.setAttribute('draggable', 'true');
     magnet.setAttribute('id', Alphabet.all[i].letter);
     magnet.addEventListener('dragstart', dragStartHandler);
-    myFreezer.appendChild(magnet);
+    myLetters.appendChild(magnet);
   }
 }
 
@@ -118,7 +149,7 @@ function dragStartHandler(event) {
 
 function dragOverHandler(event) {
   event.preventDefault();
-  event.dataTransfer.dropEffect = "move"
+  event.dataTransfer.dropEffect = "move";
 }
 
 function dropHandler(event) {
@@ -138,11 +169,11 @@ function dropHandler(event) {
       Alphabet.all[i].left = elementSelected.style.left;
       Alphabet.all[i].top = elementSelected.style.top;
 
-      if (event.target.id === 'target') {
+      if (event.target.id === 'drop-zone') {
         Alphabet.all[i].isOnFridge = true;
       }
 
-      if (event.target.id === 'freezer') {
+      if (event.target.id === 'letters') {
         Alphabet.all[i].isOnFridge = false;
       }
     }
@@ -170,9 +201,10 @@ function resetLetters(event) {
   instantiateAlphabet();
   for (let i in Alphabet.all) {
       let elementSelected = document.getElementById(Alphabet.all[i].letter);
-      elementSelected.style.padding = '0.5em';
-      elementSelected.style.left = 0;
+      // elementSelected.style.padding = '0.5em';
+      // elementSelected.style.left = 0;
   }
+  location.reload();
 }
 
 function captureWord(event) {
@@ -187,9 +219,8 @@ function captureWord(event) {
   });
 
   addWordToBank();
+  resetLetters();
 }
-
-// abstract away error handling
 
 function addWordToBank() {
   let newWord = '';
@@ -261,7 +292,7 @@ function showWords(event) {
         newWord.setAttribute('draggable', 'true');
         newWord.setAttribute('id', word);
         newWord.addEventListener('dragstart', dragStartHandler);
-        myFreezer.appendChild(newWord);
+        wordsContainer.appendChild(newWord);
     }
     console.log(word);
   }
@@ -283,6 +314,7 @@ function removeItemHandler(event) {
   });
 
   localStorage.setItem('words', JSON.stringify(wordBank));
+  resetLetters();
 }
 
 createLetters();
@@ -291,16 +323,10 @@ renderLetterPosition();
 myDiv.addEventListener('dragover', dragOverHandler);
 myDiv.addEventListener('drop', dropHandler);
 
-myFreezer.addEventListener('dragover', dragOverHandler);
-myFreezer.addEventListener('drop', dropHandler);
-
 trash.addEventListener('dragover', dragOverHandler);
 trash.addEventListener('drop', removeItemHandler)
 
-tropical.addEventListener('click', changeTheme);
-underWater.addEventListener('click', changeTheme);
-surprise.addEventListener('click', changeTheme);
+dropDown.addEventListener('change', handleTheme);
 
 reset.addEventListener('click', resetLetters);
 save.addEventListener('click', captureWord);
-myWords.addEventListener('click', showWords);

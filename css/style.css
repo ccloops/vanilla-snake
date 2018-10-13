@@ -1,7 +1,3 @@
-body {
-  background-color: red;
-}
-
 header ul {
   display: flex;
   justify-content: center;
@@ -13,61 +9,58 @@ a {
   color: black;
 }
 
-a {
-  padding: 0 3em;
+#boxes {
+  height: 700px;
 }
 
-a:first-child {
-  font-family: 'Audiowide', cursive;
-}
-
-a:nth-child(2) {
-   font-family: 'Jura', sans-serif;
-}
-
-a:nth-child(3) {
-   font-family: 'Racing Sans One', cursive;
-}
-
-a:nth-child(4) {
-  font-family: 'Press Start 2P', cursive;
-}
-
-section {
-  background-image: url('../img/botanic-botanical-bright-827058.jpg');  
-  background-size: cover;
-}
-
-section {
-  width: 80%;
-  height: 300px;
-  margin: 3em auto;
+#letters, #words {
+  display: grid;
+  grid-template-columns: 5em 5em 5em 5em;
+  background-color: lightcoral;
+  margin-right: 1em;
   -webkit-box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
   -moz-box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
   box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
+}
+
+#drop-zone {
+  background-image: url('../img/botanic-botanical-bright-827058.jpg');
+  background-size: cover;
+  width: 80%;
+  margin-right: 1em;
+  -webkit-box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
+  -moz-box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
+  box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
+}
+
+section p {
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
 }
 
 p {
-  background-color: rgb(0, 255, 229);
-  color: red;
-  padding: 0.5em;
-  margin: 0.5em;
-  font-size: 2em;
-  display: inline-block;
+  color: white;
+  border: 2px inset white;
+  text-align: center;
+  display: grid;
   text-transform: uppercase;
   font-family: 'Press Start 2P', cursive;
-  -webkit-box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
-  -moz-box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
-  box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
+  justify-self: center;
 }
 
-p:hover {
-  background-color: cornsilk;
+#words p, #dropzone p {
+  /* margin-right: 2em; */
+  /* padding: 0.5em auto; */
+  width: auto;
+}
+
+/* p:hover {
   animation: shake 0.5s;
   animation-iteration-count: infinite;
-}
+} */
 
-@keyframes shake {
+/* @keyframes shake {
   0% {
     transform: translate(1px, 1px) rotate(0deg);
   }
@@ -101,20 +94,14 @@ p:hover {
   100% {
     transform: translate(1px, -2px) rotate(-1deg);
   }
-}
+} */
 
 footer {
   font-size: 2em;
   text-align: center;
+  margin-top: 1em;
 }
 
-h3 {
-  padding: 0.5em;
-  border-radius: 10%;
-  background-color: white;
-  color: black;
-  position: absolute;
-}
 
 img {
   max-width: 5%;
@@ -129,7 +116,6 @@ div {
 }
 
 div button {
-  background-color: red;
   border: none;
   font-family: 'Audiowide', cursive;
   line-height: 1.5;
