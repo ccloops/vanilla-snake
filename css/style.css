@@ -1,7 +1,3 @@
-body {
-  background-color: red;
-}
-
 header ul {
   display: flex;
   justify-content: center;
@@ -13,56 +9,45 @@ a {
   color: black;
 }
 
-a {
-  padding: 0 3em;
+#boxes {
+  height: 700px;
 }
 
-a:first-child {
-  font-family: 'Audiowide', cursive;
+section:first-child {
+  display: grid;
+  grid-template-columns: 6em 6em 6em;
+  background-color: lightcoral;
+  margin-right: 1em;
+  -webkit-box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
+  -moz-box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
+  box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
 }
 
-a:nth-child(2) {
-   font-family: 'Jura', sans-serif;
-}
-
-a:nth-child(3) {
-   font-family: 'Racing Sans One', cursive;
-}
-
-a:nth-child(4) {
-  font-family: 'Press Start 2P', cursive;
-}
-
-section {
-  background-image: url('../img/botanic-botanical-bright-827058.jpg');  
+section:last-child {
+  background-image: url('../img/botanic-botanical-bright-827058.jpg');
   background-size: cover;
-}
-
-section {
   width: 80%;
-  height: 300px;
-  margin: 3em auto;
   -webkit-box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
   -moz-box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
   box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
 }
 
 p {
-  background-color: rgb(0, 255, 229);
-  color: red;
-  padding: 0.5em;
-  margin: 0.5em;
-  font-size: 2em;
-  display: inline-block;
+  /* background-color: rgb(0, 255, 229); */
+  /* color: red; */
+  /* padding: 0.5em; */
+  /* margin: 0.5em; */
+  /* font-size: 2em; */
+  /* width: 0.4em; */
+  display: grid;
   text-transform: uppercase;
   font-family: 'Press Start 2P', cursive;
-  -webkit-box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
-  -moz-box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
-  box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
+  /* -webkit-box-shadow: 0 10px 6px -6px rgb(24, 22, 22); */
+  /* -moz-box-shadow: 0 10px 6px -6px rgb(24, 22, 22); */
+  /* box-shadow: 0 10px 6px -6px rgb(24, 22, 22); */
 }
 
 p:hover {
-  background-color: cornsilk;
   animation: shake 0.5s;
   animation-iteration-count: infinite;
 }
@@ -103,18 +88,19 @@ p:hover {
   }
 }
 
-footer {
+/* footer {
   font-size: 2em;
   text-align: center;
-}
+  margin-top: 1em;
+} */
 
-h3 {
+/* h3 {
   padding: 0.5em;
   border-radius: 10%;
   background-color: white;
   color: black;
   position: absolute;
-}
+} */
 
 img {
   max-width: 5%;
@@ -129,7 +115,6 @@ div {
 }
 
 div button {
-  background-color: red;
   border: none;
   font-family: 'Audiowide', cursive;
   line-height: 1.5;

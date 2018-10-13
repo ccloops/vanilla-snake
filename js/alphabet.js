@@ -51,21 +51,19 @@ function changeTheme(event) {
   event.preventDefault();
   if (event.target.id === 'tropical') {
     myDiv.style.backgroundImage = `url(./img/coconut.jpg)`
-    myFreezer.style.backgroundImage = `url(./img/coconut.jpg)` 
+    myDiv.style.backgroundSize = 'cover';
   }
 
   if (event.target.id === 'underwater') {
     myDiv.style.backgroundImage = `url(./img/abstract-aqua-blue-261403.jpg)`
-    myFreezer.style.backgroundImage = `url(./img/abstract-aqua-blue-261403.jpg)` 
+    myDiv.style.backgroundSize = 'cover';
   }
 
   if (event.target.id === 'surprise') {
     let images = ['./img/space-photo.JPG', './img/me-mooshy.JPG'];
     let randomIndex = Math.floor(Math.random() * images.length );
     myDiv.style.backgroundImage = 'url("' + images[randomIndex]+ '")';
-    myFreezer.style.backgroundImage = 'url("' + images[randomIndex] + '")';
     myDiv.style.backgroundSize = '10em';
-    myFreezer.style.backgroundSize = '10em';
   }
 }
 
@@ -114,11 +112,14 @@ function createLetters() {
 function dragStartHandler(event) {
   event.dataTransfer.setData("text/plain", event.target.id);
   event.dropEffect = "move";
+  // event.dropEffect = 'copy';
+  // event.dataTransfer.effectAllowed = "copy";
 }
 
 function dragOverHandler(event) {
   event.preventDefault();
-  event.dataTransfer.dropEffect = "move"
+  event.dataTransfer.dropEffect = "move";
+  // event.dataTransfer.dropEffect = 'copy';
 }
 
 function dropHandler(event) {
@@ -127,11 +128,19 @@ function dropHandler(event) {
   event.target.appendChild(document.getElementById(data));
   
   let elementSelected = document.getElementById(data);
+
+  // let newElement = document.createElement('p');
+  // newElement.textContent = data;
   
-  elementSelected.style.position = 'absolute';
-  elementSelected.style.zIndex = 1000;
-  elementSelected.style.left = event.pageX - elementSelected.offsetWidth / 2 + 'px';
-  elementSelected.style.top = event.pageY - elementSelected.offsetHeight / 2 + 'px';
+  //  newElement.style.position = 'absolute';
+  //  newElement.style.zIndex = 1000;
+  //  newElement.style.left = event.pageX - elementSelected.offsetWidth / 2 + 'px';
+  //  newElement.style.top = event.pageY - elementSelected.offsetHeight / 2 + 'px';
+  
+  // elementSelected.style.position = 'absolute';
+  // elementSelected.style.zIndex = 1000;
+  // elementSelected.style.left = event.pageX - elementSelected.offsetWidth / 2 + 'px';
+  // elementSelected.style.top = event.pageY - elementSelected.offsetHeight / 2 + 'px';
   
   for (let i = 0; i < Alphabet.all.length; i++) {
     if (data === Alphabet.all[i].letter) {
