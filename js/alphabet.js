@@ -189,6 +189,8 @@ function captureWord(event) {
   addWordToBank();
 }
 
+// abstract away error handling
+
 function addWordToBank() {
   let newWord = '';
   for (let key of wordStaging) {
