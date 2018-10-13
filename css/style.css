@@ -46,6 +46,7 @@ p {
   display: grid;
   text-transform: uppercase;
   font-family: 'Press Start 2P', cursive;
+  justify-self: center;
 }
 
 #words p, #dropzone p {
