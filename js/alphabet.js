@@ -169,8 +169,8 @@ function resetLetters(event) {
   instantiateAlphabet();
   for (let i in Alphabet.all) {
       let elementSelected = document.getElementById(Alphabet.all[i].letter);
-      elementSelected.style.padding = '0.5em';
-      elementSelected.style.left = 0;
+      // elementSelected.style.padding = '0.5em';
+      // elementSelected.style.left = 0;
   }
   location.reload();
 }

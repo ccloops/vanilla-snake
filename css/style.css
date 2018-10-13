@@ -48,9 +48,10 @@ p {
   font-family: 'Press Start 2P', cursive;
 }
 
-#words p {
-  margin-right: 2em;
-  padding: 0.5em auto;
+#words p, #dropzone p {
+  /* margin-right: 2em; */
+  /* padding: 0.5em auto; */
+  width: auto;
 }
 
 /* p:hover {
@@ -94,11 +95,11 @@ p {
   }
 } */
 
-/* footer {
+footer {
   font-size: 2em;
   text-align: center;
   margin-top: 1em;
-} */
+}
 
 
 img {
