@@ -5,6 +5,16 @@ Word.all = [];
 let wordStaging = [];
 let wordBank;
 
+const myFreezer = document.getElementById('freezer');
+const myDiv = document.getElementById('target');
+const wordsContainer = document.getElementById('words');
+const tropical = document.getElementById('tropical');
+const underWater = document.getElementById('underwater');
+const surprise = document.getElementById('surprise');
+const reset = document.getElementById('reset');
+const trash = document.getElementById('trash');
+const save = document.getElementById('save');
+
 function Alphabet(letter) {
   this.letter = letter;
   this.left = 0;
@@ -27,6 +37,7 @@ if (!words) {
   wordBank = [];
 } else {
   wordBank = JSON.parse(words);
+  showWords();
 }
 
 let storedAlphabet = localStorage.getItem('alphabet');
@@ -36,17 +47,6 @@ if (!storedAlphabet) {
 } else {
   Alphabet.all = JSON.parse(storedAlphabet);
 }
-
-const myFreezer = document.getElementById('freezer');
-const myDiv = document.getElementById('target');
-const wordsContainer = document.getElementById('words');
-const tropical = document.getElementById('tropical');
-const underWater = document.getElementById('underwater');
-const surprise = document.getElementById('surprise');
-const reset = document.getElementById('reset');
-const trash = document.getElementById('trash');
-const save = document.getElementById('save');
-const myWords = document.getElementById('show-words');
 
 function changeTheme(event) {
   event.preventDefault();
@@ -113,14 +113,11 @@ function createLetters() {
 function dragStartHandler(event) {
   event.dataTransfer.setData("text/plain", event.target.id);
   event.dropEffect = "move";
-  // event.dropEffect = 'copy';
-  // event.dataTransfer.effectAllowed = "copy";
 }
 
 function dragOverHandler(event) {
   event.preventDefault();
   event.dataTransfer.dropEffect = "move";
-  // event.dataTransfer.dropEffect = 'copy';
 }
 
 function dropHandler(event) {
@@ -129,14 +126,6 @@ function dropHandler(event) {
   event.target.appendChild(document.getElementById(data));
   
   let elementSelected = document.getElementById(data);
-
-  // let newElement = document.createElement('p');
-  // newElement.textContent = data;
-  
-  //  newElement.style.position = 'absolute';
-  //  newElement.style.zIndex = 1000;
-  //  newElement.style.left = event.pageX - elementSelected.offsetWidth / 2 + 'px';
-  //  newElement.style.top = event.pageY - elementSelected.offsetHeight / 2 + 'px';
   
   elementSelected.style.position = 'absolute';
   elementSelected.style.zIndex = 1000;
@@ -198,9 +187,8 @@ function captureWord(event) {
   });
 
   addWordToBank();
+  resetLetters();
 }
-
-// abstract away error handling
 
 function addWordToBank() {
   let newWord = '';
@@ -314,4 +302,3 @@ surprise.addEventListener('click', changeTheme);
 
 reset.addEventListener('click', resetLetters);
 save.addEventListener('click', captureWord);
-myWords.addEventListener('click', showWords);

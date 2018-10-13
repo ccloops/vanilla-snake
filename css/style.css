@@ -23,6 +23,10 @@ section:first-child, #words {
   box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
 }
 
+/* #words {
+  margin-right: 1em;
+} */
+
 section:nth-child(2) {
   background-image: url('../img/botanic-botanical-bright-827058.jpg');
   background-size: cover;
@@ -40,16 +44,18 @@ section p {
 }
 
 p {
-  /* padding: 0.3em; */
   color: white;
   border: 2px inset white;
   text-align: center;
   display: grid;
   text-transform: uppercase;
   font-family: 'Press Start 2P', cursive;
-  /* -webkit-box-shadow: 0 10px 6px -6px rgb(24, 22, 22); */
-  /* -moz-box-shadow: 0 10px 6px -6px rgb(24, 22, 22); */
-  /* box-shadow: 0 10px 6px -6px rgb(24, 22, 22); */
+}
+
+#words p {
+  /* width: auto; */
+  margin-right: 2em;
+  padding: 0.5em auto;
 }
 
 p:hover {
