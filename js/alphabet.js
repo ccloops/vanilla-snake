@@ -8,9 +8,7 @@ let wordBank;
 const myLetters = document.getElementById('letters');
 const myDiv = document.getElementById('drop-zone');
 const wordsContainer = document.getElementById('words');
-const tropical = document.getElementById('tropical');
-const underWater = document.getElementById('underwater');
-const surprise = document.getElementById('surprise');
+const dropDown = document.getElementById('drop-down');
 const reset = document.getElementById('reset');
 const trash = document.getElementById('trash');
 const save = document.getElementById('save');
@@ -48,24 +46,58 @@ if (!storedAlphabet) {
   Alphabet.all = JSON.parse(storedAlphabet);
 }
 
-function changeTheme(event) {
-  event.preventDefault();
-  if (event.target.id === 'tropical') {
+let storedTheme = localStorage.getItem('theme');
+
+if(storedTheme) {
+  console.log('hello');
+  if (storedTheme === 'tropical') {
+    console.log('hitting tropical');
     myDiv.style.backgroundImage = `url(./img/coconut.jpg)`
     myDiv.style.backgroundSize = 'cover';
+    localStorage.setItem('theme', JSON.stringify(event.target.value));
   }
 
-  if (event.target.id === 'underwater') {
+  if (storedTheme === 'underwater') {
+    console.log('hitting underwater');
     myDiv.style.backgroundImage = `url(./img/abstract-aqua-blue-261403.jpg)`
     myDiv.style.backgroundSize = 'cover';
+    localStorage.setItem('theme', JSON.stringify(event.target.value));
   }
 
-  if (event.target.id === 'surprise') {
+  if (storedTheme === 'surprise') {
+    console.log('hitting surprise');
     let images = ['./img/space-photo.JPG', './img/me-mooshy.JPG'];
-    let randomIndex = Math.floor(Math.random() * images.length );
-    myDiv.style.backgroundImage = 'url("' + images[randomIndex]+ '")';
+    let randomIndex = Math.floor(Math.random() * images.length);
+    myDiv.style.backgroundImage = 'url("' + images[randomIndex] + '")';
     myDiv.style.backgroundSize = '10em';
+    localStorage.setItem('theme', JSON.stringify(event.target.value));
   }
+}
+
+function handleTheme(event) {
+  event.preventDefault();
+  console.log(event.target.value);
+    if (event.target.value === 'tropical') {
+      myDiv.style.backgroundImage = `url(./img/coconut.jpg)`
+      myDiv.style.backgroundSize = 'cover';
+      localStorage.setItem('theme', JSON.stringify(event.target.value));
+    }
+
+    if (event.target.value === 'underwater') {
+      console.log('hitting underwater');
+      myDiv.style.backgroundImage = `url(./img/abstract-aqua-blue-261403.jpg)`
+      myDiv.style.backgroundSize = 'cover';
+      localStorage.setItem('theme', JSON.stringify(event.target.value));
+    }
+
+    if (event.target.value === 'surprise') {
+      console.log('hitting surprise');
+      let images = ['./img/space-photo.JPG', './img/me-mooshy.JPG'];
+      let randomIndex = Math.floor(Math.random() * images.length);
+      myDiv.style.backgroundImage = 'url("' + images[randomIndex] + '")';
+      myDiv.style.backgroundSize = '10em';
+      localStorage.setItem('theme', JSON.stringify(event.target.value));
+    }
 }
 
 function instantiateAlphabet() {
@@ -282,6 +314,7 @@ function removeItemHandler(event) {
   });
 
   localStorage.setItem('words', JSON.stringify(wordBank));
+  resetLetters();
 }
 
 createLetters();
@@ -293,9 +326,7 @@ myDiv.addEventListener('drop', dropHandler);
 trash.addEventListener('dragover', dragOverHandler);
 trash.addEventListener('drop', removeItemHandler)
 
-tropical.addEventListener('click', changeTheme);
-underWater.addEventListener('click', changeTheme);
-surprise.addEventListener('click', changeTheme);
+dropDown.addEventListener('change', handleTheme);
 
 reset.addEventListener('click', resetLetters);
 save.addEventListener('click', captureWord);
