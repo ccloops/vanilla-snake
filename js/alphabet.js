@@ -5,8 +5,8 @@ Word.all = [];
 let wordStaging = [];
 let wordBank;
 
-const myFreezer = document.getElementById('freezer');
-const myDiv = document.getElementById('target');
+const myLetters = document.getElementById('letters');
+const myDiv = document.getElementById('drop-zone');
 const wordsContainer = document.getElementById('words');
 const tropical = document.getElementById('tropical');
 const underWater = document.getElementById('underwater');
@@ -106,7 +106,7 @@ function createLetters() {
     magnet.setAttribute('draggable', 'true');
     magnet.setAttribute('id', Alphabet.all[i].letter);
     magnet.addEventListener('dragstart', dragStartHandler);
-    myFreezer.appendChild(magnet);
+    myLetters.appendChild(magnet);
   }
 }
 
@@ -137,11 +137,11 @@ function dropHandler(event) {
       Alphabet.all[i].left = elementSelected.style.left;
       Alphabet.all[i].top = elementSelected.style.top;
 
-      if (event.target.id === 'target') {
+      if (event.target.id === 'drop-zone') {
         Alphabet.all[i].isOnFridge = true;
       }
 
-      if (event.target.id === 'freezer') {
+      if (event.target.id === 'letters') {
         Alphabet.all[i].isOnFridge = false;
       }
     }
@@ -289,9 +289,6 @@ renderLetterPosition();
 
 myDiv.addEventListener('dragover', dragOverHandler);
 myDiv.addEventListener('drop', dropHandler);
-
-// myFreezer.addEventListener('dragover', dragOverHandler);
-// myFreezer.addEventListener('drop', dropHandler);
 
 trash.addEventListener('dragover', dragOverHandler);
 trash.addEventListener('drop', removeItemHandler)

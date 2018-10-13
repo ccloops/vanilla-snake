@@ -13,7 +13,7 @@ a {
   height: 700px;
 }
 
-section:first-child, #words {
+#letters, #words {
   display: grid;
   grid-template-columns: 5em 5em 5em 5em;
   background-color: lightcoral;
@@ -23,11 +23,7 @@ section:first-child, #words {
   box-shadow: 0 10px 6px -6px rgb(24, 22, 22);
 }
 
-/* #words {
-  margin-right: 1em;
-} */
-
-section:nth-child(2) {
+#drop-zone {
   background-image: url('../img/botanic-botanical-bright-827058.jpg');
   background-size: cover;
   width: 80%;
@@ -53,15 +49,14 @@ p {
 }
 
 #words p {
-  /* width: auto; */
   margin-right: 2em;
   padding: 0.5em auto;
 }
 
-p:hover {
+/* p:hover {
   animation: shake 0.5s;
   animation-iteration-count: infinite;
-}
+} */
 
 /* @keyframes shake {
   0% {
@@ -105,13 +100,6 @@ p:hover {
   margin-top: 1em;
 } */
 
-/* h3 {
-  padding: 0.5em;
-  border-radius: 10%;
-  background-color: white;
-  color: black;
-  position: absolute;
-} */
 
 img {
   max-width: 5%;
